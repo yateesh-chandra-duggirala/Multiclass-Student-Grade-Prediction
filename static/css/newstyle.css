@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+  color: yellowgreen;
+  font-family: 'Brush Script MT', cursive;
+  font-size: 40px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #000;
+}
+
+.dateright {
+  text-align: right;
+  top: 300px;
+  right: 50px;
+}
+
+h3 {
+  color: #90EE90;
+  text-align: right;
+}
+
+b {
+  color: turquoise;
+  font-size: large;
+}
+
+.indented {
+  padding-left: 90px;
+}
+
+p {
+  font-size: medium;
+  line-height: 2.0;
+  text-align: left;
+}
+
+.wrapper {
+  position: relative;
+  width: 1000px;
+  height: 500px;
+  background: #000;
+  box-shadow: 0 0 50px #0ef;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.wrapper-button {
+  text-align: center;
+}
+
+.wrapper:hover {
+  animation: animate 1s linear infinite;
+}
+
+@keyframes animate {
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+h2 {
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+}
+
+button {
+  position: relative;
+  width: 50%;
+  height: 40px;
+  background: black;
+  box-shadow: 0 0 10px #0ef;
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  margin: auto;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.button .button-text {
+  display: inline;
+  margin-right: 1px;
+}
+
+.download-button {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.logo {
+  position: absolute;
+  top: 20px;
+  width: 100px; /* Adjust the width as per your requirement */
+  height: auto; /* Adjust the height as per your requirement */
+}
+
+.left {
+  left: 20px;
+}
+
+.right {
+  right: 20px;
+}
+
+.aulogo{
+  position: absolute;
+  top: 300px;
+  width: 100px; /* Adjust the width as per your requirement */
+  height: auto; /* Adjust the height as per your requirement */
+  left: 150px
+}

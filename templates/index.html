@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prediction Form</title>
+	
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/indexstyle.css') }}">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <link rel="icon" type="images/png" href="{{ url_for('static', filename='images/iconhome.png') }}">
+	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+</head>
+<body>
+	<img class="wave" src="{{ url_for('static', filename='images/wave.png') }}">
+	<div class="container">
+		<div class="img">
+			<img src="{{ url_for('static', filename='images/study.png') }}">
+		</div>
+		<div class="login-content">
+            <form id="myForm" action="/predict" method="POST">
+				
+				<h2>Predict Your Performance</h2>
+
+                   <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="div">
+                            <h5>Student Name / Id</h5>
+                            <input type="text" class = "input" name="student_id" id="student_id" required><br>
+                    </div>
+                 </div>
+
+                 <div class="input-div">
+                  <div class="i">
+                    <i class="fas fa-mars" aria-hidden="true"></i>
+                    </div>
+                  <div class="div">
+                    <h5>Gender</h5>
+                    <select name="gender" id="gender" required>
+                      <option value="female">Female</option>
+                      <option value="male">Male</option>
+                  </select>
+                  </div>
+                </div>
+
+                 <div class="input-div">
+                    <div class="i">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </div>
+                    <div class="div">
+                      <h5>Year</h5>
+                      <select name="year" id="year" required>
+                        <option value="2016">2016</option>
+                        <option value="2017">2017</option>
+                        <option value="2018">2018</option>
+                        <option value="2019">2019</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  <div class="input-div">
+                    <div class="i">
+                      <i class="fa fa-hourglass" aria-hidden="true"></i>
+                    </div>
+                    <div class="div">
+                      <h5>Credit Hour</h5>
+                      <select name="credit_hour" id="credit_hour" required>
+                        <option value="1.0">1.0</option>
+                        <option value="2.0">2.0</option>
+                        <option value="3.0">3.0</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  <div class="input-div">
+                    <div class="i">
+                        <i class="fa fa-calculator" aria-hidden="true"></i>
+                      </div>
+                    <div class="div">
+                      <h5>Grade Point Average</h5>
+                      <select name="gpa" id="gpa" required>
+                        <option value="4.0">4.0</option>
+                        <option value="3.7">3.7</option>
+                        <option value="3.3">3.3</option>
+                        <option value="3.0">3.0</option>
+                        <option value="2.7">2.7</option>
+                        <option value="2.3">2.3</option>
+                        <option value="2.0">2.0</option>
+                        <option value="1.7">1.7</option>
+                        <option value="1.3">1.3</option>
+                        <option value="1.0">1.0</option>
+                        <option value="0.0">0.0</option>
+                    </select>
+                    </div>
+                  </div>
+                  
+
+                  <div class="input-div">
+                    <div class="i">
+                        <i class="fas fa-star" aria-hidden="true"></i>
+                      </div>
+                    <div class="div">
+                      <h5>Grade</h5>
+                      <select name="grade" id="grade" required>
+                        <option value="0">A+</option>
+                        <option value="1">A</option>
+                        <option value="2">A-</option>
+                        <option value="3">B+</option>
+                        <option value="4">B</option>
+                        <option value="5">B-</option>
+                        <option value="6">C+</option>
+                        <option value="7">C</option>
+                        <option value="8">C-</option>
+                        <option value="9">D+</option>
+                        <option value="10">D</option>
+                        <option value="11">E</option>
+                        <option value="12">F</option>
+                    </select>
+                    </div>
+                  </div>
+
+           		<div class="input-div pass">
+           		   <div class="i"> 
+                    <i class="fas fa-percentage" aria-hidden="true"></i>
+           		   </div>
+           		   <div class="div">
+           		    	<h5>Total Marks</h5>
+           		    	<input type="number" class="input" name="total_marks" id="total_marks" min="0" max="100" required>
+            	   </div>
+                </div>
+            	<input type="submit" class="btn" value="Predict">
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

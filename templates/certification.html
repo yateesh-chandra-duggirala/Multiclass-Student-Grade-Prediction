@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificate</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/newstyle.css') }}">
+  <link rel="icon" type="images/png" href="{{ url_for('static', filename='images/badge.png') }}">
+</head>
+ 
+<body>
+ 
+  <div class="wrapper">
+        <h1>Performance Report</h1><br><br>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp This is to acknowledge that <b>{% if gender == "male" %}Mr.{% elif gender == "female" %}Miss.{% else %}Sri.{% endif %}
+  "{{ name }}"</b> has successfully completed {% if gender == "male" %}his{% elif gender == "female" %}her{% else %}the{% endif %} studies by the year <b color ="red"> "{{ year }}"</b> without any arrears. {% if gender == "male" %}He{% elif gender == "female" %}She{% else %}The candidate{% endif %} has acheived <b>{{gpa}}</b> GPA (Grade Point Average) by securing <b>{{marks}} Marks</b> and Got 
+  <b>{% if grade == "0" %}
+  A+
+{% elif grade == "1" %}
+  A
+{% elif grade == "2" %}
+  A-
+{% elif grade == "3" %}
+  B+
+{% elif grade == "4" %}
+  B
+{% elif grade == "5" %}
+  B-
+{% elif grade == "6" %}
+  C+
+{% elif grade == "7" %}
+  C
+{% elif grade == "8" %}
+  C-
+{% elif grade == "9" %}
+  D+
+{% elif grade == "10" %}
+  D
+{% elif grade == "11" %}
+  E
+{% elif grade == "12" %}
+  F
+{% else %}
+  Unknown
+{% endif %} 
+  Grade</b>. The performance status is hereby declared as      
+          <b>"{% if prediction == '0' %}
+            <b style="color: red;">FAIL</b>
+        {% elif prediction == '1' %}
+            <b style="color: orange;">PASS</b>
+        {% elif prediction == '2' %}
+            <b style="color: blue;">DISTINCTION</b>
+        {% elif prediction == '3' %}
+            <b style="color: green;">EXCELLENT</b>
+        {% elif prediction == '4' %}
+            <b style="color: darkgreen;">EXCEPTIONAL</b>
+        {% else %}
+            <b>Unknown</b>
+        {% endif %}
+          "</b>.</p>
+
+          <br><br><br>
+          <div>
+              <h3 class = "dateright" id="date">
+              Date : 
+              </h3>
+          </div>
+
+
+        <br>
+
+        <div>
+          <img src="./static/images/star.png" alt="Left Logo" class="logo left">
+          <img src="./static/images/star.png" alt="Right Logo" class="logo right">
+        </div>
+        
+        <div>
+          <img src="./static/images/aulogo.png" alt="AU Logo" class="aulogo">
+        </div>
+
+        <div class = "wrapper-button">
+          <button id="download-button" class="download-button" onclick="downloadImage()">
+              <span class="button-text">Download Certificate</span>
+          </button>
+        
+
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        function downloadImage() {
+            // Hide the download button
+            document.getElementById("download-button").style.display = "none";
+
+            html2canvas(document.body).then(function(canvas) {
+                var link = document.createElement("a");
+                document.body.appendChild(link);
+                link.download = "certificate.png";
+                link.href = canvas.toDataURL("image/png");
+                link.target = "_blank";
+                link.click();
+                document.body.removeChild(link);
+
+                // Restore the visibility of the download button
+                document.getElementById("download-button").style.display = "block";
+            });
+        }
+
+        // Get the current date
+        var currentDate = new Date();
+        
+        // Format the date as dd/mm/yyyy
+        var day = currentDate.getDate();
+        var month = currentDate.getMonth() + 1;
+        var year = currentDate.getFullYear();
+  
+        // Add leading zeros if necessary
+        if (day < 10) {
+          day = '0' + day;
+        }
+        if (month < 10) {
+          month = '0' + month;
+        }
+  
+        // Update the "Date" field with the current date in dd/mm/yyyy format
+        document.getElementById("date").innerHTML += " " + day + "/" + month + "/" + year;
+      </script>
+    
+    </div>
+</body>
+ 
+</html>

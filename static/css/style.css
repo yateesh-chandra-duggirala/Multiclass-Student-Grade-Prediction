@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+*{
+	font-family: 'Poppins', sans-serif;
+	color : White;
+}
+body{
+	background: palegreen;
+}
+.main{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+}
+.center{
+	position: relative;
+	width: 1300px;
+	height: 600px;
+	background: black;
+	display: flex;align-items: center;justify-content: center;
+	box-shadow: 0.1px 4px 15px 10px rgba(0,0,0,0.1);
+}
+#cut{
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 2;
+	opacity: 0.9;
+	clip-path: polygon(40% 0, 100% 0, 100% 100%, 100% 100%);
+}
+
+table {
+    width: 90%;
+    margin-top: 30px;
+    border-collapse: collapse;
+    margin-left: 150px;
+	table-layout: fixed;
+    margin-right: auto;
+}
+
+th, td {
+    padding: 10px;
+	border-style: double;
+    text-align: center;
+}
+
+th {
+    background-color: #AB47BC;
+    color: #fff;
+}
+
+td {
+    border-bottom: 1px solid #ccc;
+}
+
+
+.left{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 60%;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.rightali{
+	text-align: center;
+	margin-left: 220px;
+}
+
+.right{
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	width: 50%;
+}
+.right img{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 60%;
+	height: 60%;
+}
+.top {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 100%;
+}
+.top label{
+	font-weight: bold;
+	font-size: 30px;
+	text-transform: capitalize;
+}
+.top span{
+	color: #AB47BC;
+	margin-left: 5px;
+	cursor: pointer;
+}
+  
+.button button{
+	width: 200px;
+    padding: 10px 13px;
+    outline: none;
+    border-radius: 4px;
+	text-align: center;
+    background-image: linear-gradient(to right , #AB47BC , #CE93D8);
+	font-size: 16px;
+	border: none;
+	cursor: pointer;
+	margin-left: 10px;
+	margin-right: 20px;
+	text-decoration: none;
+}
+
+.download-button {
+    width: 180px; /* Adjust the width to your desired value */
+
+}
+
+.button {
+	margin-top: 20px;
+	display: flex;
+	justify-content: center;
+	
+  }
+
+  .button-text {
+	margin-left: 5px;
+}

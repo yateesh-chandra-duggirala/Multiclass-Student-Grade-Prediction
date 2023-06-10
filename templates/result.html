@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Result</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" type="images/png" href="{{ url_for('static', filename='images/result.png') }}">
+</head>
+
+<body>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+
+                            function downloadImage() {
+                                // Hide the button container
+                                document.getElementById("button-container").style.display = "none";
+
+                                html2canvas(document.body).then(function(canvas) {
+                                    var link = document.createElement("a");
+                                    document.body.appendChild(link);
+                                    link.download = "card.png";
+                                    link.href = canvas.toDataURL("image/png");
+                                    link.target = "_blank";
+                                    link.click();
+                                    document.body.removeChild(link);
+
+                                    // Restore the visibility of the button container
+                                    document.getElementById("button-container").style.display = "block";
+                                });
+                            }
+
+                            function generateCertificate() {
+                                // Retrieve the necessary data
+                                var gender = "{{ session['gender'] }}";
+                                var name = "{{ session['student_id'] }}";
+                                var year = "{{ request.form['year'] }}";
+                                var gpa = "{{ request.form['gpa'] }}";
+                                var marks = "{{ request.form['total_marks'] }}";
+                                var grade = "{{ request.form['grade'] }}";
+                                var prediction = "{{ prediction[0] }}";
+
+                                // Redirect to the certificate URL with the provided data
+                                var certificateURL = "{{ url_for('certificate') }}" + "?gender=" + gender + "&name=" + name + "&year=" + year + "&gpa=" + gpa + "&marks=" + marks + "&grade=" + grade + "&prediction=" + prediction;
+                                window.location.href = certificateURL;
+                            }
+
+
+                            function redirectToErrorPage() {
+                                // Redirect to the error page
+                                var gender = "{{ session['gender'] }}";
+                                var name = "{{ session['student_id'] }}";
+                                var errorURL = "{{ url_for('error') }}" + "?gender=" + gender + "&name=" + name;
+                                window.location.href = errorURL;
+                            }
+    </script>
+    
+    <div class="main">
+        <div class="center"> 
+                <div class="left">
+                    <div class="top">
+                        <h1>Hello
+                            {% if gender == "male" %}
+                                    Mr.
+                            {% elif gender == "female" %}
+                                    Miss.
+                            {% else %}
+                                    Sri.
+                            {% endif %}
+                            {{ session['student_id'] }},
+                        </h1>
+                    </div>
+
+                    <br>
+                    <table>
+                    <tr>
+                        <th colspan="2">Details</th>
+                    </tr>
+                    <tr>
+                        <td>Student Name / ID</td>
+                        <td>{{ session['student_id'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Year</td>
+                        <td>{{ request.form['year'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Credit Hour</td>
+                        <td>{{ request.form['credit_hour'] }}</td>
+                    </tr>
+                    <tr>
+                        <td>Grade Point Average</td>
+                        <td>{{ request.form['gpa'] }}</td>
+                    </tr>
+                  
+                    <tr>
+                        <td>Grade</td>
+                        <td>
+                            {% if grade == 0 %}
+                                A+
+                            {% elif grade == 1 %}
+                                A
+                            {% elif grade == 2 %}
+                                A-
+                            {% elif grade == 3 %}
+                                B+
+                            {% elif grade == 4 %}
+                                B
+                            {% elif grade == 5 %}
+                                B-
+                            {% elif grade == 6 %}
+                                C+
+                            {% elif grade == 7 %}
+                                C
+                            {% elif grade == 8 %}
+                                C-
+                            {% elif grade == 9 %}
+                                D+
+                            {% elif grade == 10 %}
+                                D
+                            {% elif grade == 11 %}
+                                E
+                            {% elif grade == 12 %}
+                                F
+                            {% else %}
+                                Unknown
+                            {% endif %}
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Total Marks</td>
+                        <td>{{ request.form['total_marks'] }}</td>
+                    </tr>
+                    <tr>
+                        <td> Performance </td>
+                        <td> {% if prediction == 0 %}
+                            <b style="color: red;">FAIL</b>
+                        {% elif prediction == 1 %}
+                            <b style="color: orange;">PASS</b>
+                        {% elif prediction == 2 %}
+                            <b style="color: blue;">DISTINCTION</b>
+                        {% elif prediction == 3 %}
+                            <b style="color: green;">EXCELLENT</b>
+                        {% elif prediction == 4 %}
+                            <b style="color: darkgreen;">EXCEPTIONAL</b>
+                        {% else %}
+                            <b>Unknown</b>
+                        {% endif %}
+                    </td>
+                    </tr>
+                    </table>
+                
+                    <br>
+                    <br>
+    
+                    <div class="button" id="button-container">
+                        <div class = "rightali">
+                        <button class="download-button" onclick="downloadImage()">
+                          <span class="button-text">Download Card</span>
+                        </button>
+                      
+                        {% if prediction == 0 %}
+                        <button class="download-button" onclick="redirectToErrorPage()">
+                          <span class="button-text">Certificate</span>
+                        </button>
+                        {% else %}
+                        <button class="download-button" onclick="generateCertificate()">
+                          <span class="button-text">Certificate</span>
+                        </button>
+                        {% endif %}
+                        </div>
+                    </div>
+                               
+                </div>
+                <label id="cut"></label>
+                <div class="right">
+                    <img src="{{ url_for('static', filename='images/bg1.png') }}">
+                </div>
+            </div>
+    </div>
+
+</body>
+</html>
